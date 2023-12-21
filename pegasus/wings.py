@@ -86,13 +86,15 @@ via [the Poetry Foundation]({poem.url})*
 def post_to_cohost(poem):
     cookie = Path("cookie").read_text()[:-1]
     project_name = Path("project_name").read_text()[:-1]
-    
+
     user = User.loginWithCookie(cookie)
     project = user.getProject(project_name)
 
     blocks = [MarkdownBlock(poem["markdown"])]
 
     if project is not None:
-        newPost = project.post(poem["title"], blocks, tags=[poem["author"], "poetry", "poetry foundation"])
+        newPost = project.post(
+            poem["title"], blocks, tags=[poem["author"], "poetry", "poetry foundation"]
+        )
         if newPost is not None:
             print(f"Check out your post at {newPost.url}")

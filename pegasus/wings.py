@@ -1,7 +1,7 @@
 from types import SimpleNamespace
-from pathlib import Path
 import re
 import feedparser
+import os
 from bs4 import BeautifulSoup
 from cohost.models.user import User
 from cohost.models.block import MarkdownBlock
@@ -84,8 +84,11 @@ via [the Poetry Foundation]({poem.url})*
 
 
 def post_to_cohost(poem):
-    cookie = Path("cookie").read_text()[:-1]
-    project_name = Path("project_name").read_text()[:-1]
+    cookie = os.getenv("COOKIE") 
+    project_name = os.getenv("PROJECT_NAME") 
+
+    if project_name is None:
+        raise Exception("Missing project name!")
 
     user = User.loginWithCookie(cookie)
     project = user.getProject(project_name)

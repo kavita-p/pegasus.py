@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "pegasus-py"
+version = "0.1.0"
+description = "A bot that likes poetry (literary)"
+authors = ["Kavita Poduri <76273926+kavita-p@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "pegasus"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+bs4 = "^0.0.1"
+cohost = "^0.4.0"
+feedparser = "^6.0.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+ruff = "^0.1.8"
+
+[tool.pyright]
+venvPath = "./"
+venv = ".venv"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "pegasus"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
 bs4 = "^0.0.1"
 cohost = "^0.4.0"
 feedparser = "^6.0.11"

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pegasus-py"
-version = "0.1.0"
+version = "0.2.0"
 description = "A bot that likes poetry (literary)"
 authors = ["Kavita Poduri <76273926+kavita-p@users.noreply.github.com>"]
 readme = "README.md"

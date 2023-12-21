@@ -86,8 +86,8 @@ via [the Poetry Foundation]({poem.url})*
 def post_to_cohost(poem):
     cookie = Path("cookie").read_text()[:-1]
     project_name = Path("project_name").read_text()[:-1]
+    
     user = User.loginWithCookie(cookie)
-
     project = user.getProject(project_name)
 
     blocks = [MarkdownBlock(poem["markdown"])]

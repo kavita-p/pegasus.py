@@ -72,7 +72,7 @@ via [the Poetry Foundation]({poem.url})*
 
     if poem.source is not None:
         markdown += f"""
-<sup>Source: {poem.source}</sup>
+<sup>{poem.source}</sup>
 """
     markdown += """  
 <hr />

@@ -38,6 +38,9 @@ def parse_from_rss_entry(rss_entry):
     if source is not None and source.parent is not None:
         source = source.parent.get_text()
         source = " ".join(source.split())
+        source = source.replace(": ", ": *")
+        source = source.replace(" ( ", "* (")
+        source = source.replace(" )", ")")
 
     return {
         "url": parsed_entry.select(".poemTitle a")[0].get("href"),

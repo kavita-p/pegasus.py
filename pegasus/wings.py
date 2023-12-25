@@ -31,7 +31,7 @@ def parse_from_rss_entry(rss_entry):
     # editor's note
     editor_note = parsed_entry.select(".note p")[0:1] or None
     if editor_note is not None:
-        editor_note = editor_note[0].decode_contents()
+        editor_note = editor_note[0].decode_contents().strip()
 
     # source
     source = parsed_entry.find(string=re.compile("Source"))

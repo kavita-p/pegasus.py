@@ -26,7 +26,7 @@ def parse_from_rss_entry(rss_entry):
     # supporting text
     supporting_text = parsed_entry.find("div", class_="text-supporting")
     if supporting_text is not None:
-        supporting_text = supporting_text.get_text().strip()
+        supporting_text = " ".join(supporting_text.get_text().split())
 
     # editor's note
     editor_note = parsed_entry.select(".note p")[0:1] or None
@@ -36,8 +36,7 @@ def parse_from_rss_entry(rss_entry):
     # source
     source = parsed_entry.find(string=re.compile("Source"))
     if source is not None and source.parent is not None:
-        source = source.parent.get_text()
-        source = " ".join(source.split())
+        source = " ".join(source.parent.get_text().split())
         source = source.replace(": ", ": *")
         source = source.replace(" ( ", "* (")
         source = source.replace(" )", ")")

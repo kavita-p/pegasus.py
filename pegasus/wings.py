@@ -34,12 +34,17 @@ def parse_from_rss_entry(rss_entry):
         editor_note = editor_note[0].decode_contents().strip()
 
     # source
-    source = parsed_entry.find(string=re.compile("Source"))
-    if source is not None and source.parent is not None:
-        source = " ".join(source.parent.get_text().split())
-        source = source.replace(": ", ": *")
-        source = source.replace(" ( ", "* (")
-        source = source.replace(" )", ")")
+    source_tag = parsed_entry.find(string=re.compile("Source"))
+    if source_tag is not None and source_tag.parent is not None:
+        source = " ".join(source_tag.parent.get_text().split())
+        source = (source
+            .replace(" ( ", " (")\
+            .replace(" )", ")")
+            .replace(" (", "* (")
+            .replace(": ", ": *")
+        )
+    else:
+        source = None
 
     return {
         "url": parsed_entry.select(".poemTitle a")[0].get("href"),
